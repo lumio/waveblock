@@ -9,8 +9,8 @@ const BlockWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  width: 30vmin;
-  height: 30vmin;
+  width: 20vmin;
+  height: 20vmin;
 `;
 
 const WaveBlock = ( props ) => (

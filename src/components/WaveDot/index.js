@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-function stretchScale( scale, min, max ) {
+function stretchValue( scale, min, max ) {
   return ( max - min ) * scale + min
 }
 
@@ -13,14 +13,17 @@ const Dot = styled.div`
 
   border-radius: 100%;
   transform: scale( .1 );
-  transition: transform .1s ease;
+  transition: all .2s ease;
 `;
 
 const WaveDot = ( props ) => (
   <Dot
-    style={ { transform: `scale( ${
-      stretchScale( props.scale, props.min, props.max )
-    } )` } }
+    style={ {
+      transform: `scale( ${
+        stretchValue( props.scale, props.min, props.max )
+      } )`,
+      opacity: stretchValue( props.scale, .25, 1 )
+    } }
   />
 );
 
@@ -32,7 +35,7 @@ WaveDot.propTypes = {
 
 WaveDot.defaultProps = {
   min: .08,
-  max: 3,
+  max: 1,
 }
 
 export default WaveDot;
