@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const DotWrapper = styled.div`
+const Dot = styled.div`
   width: 33.33%;
   height: 33.33%;
   background: #000;
@@ -12,13 +13,13 @@ const DotWrapper = styled.div`
 `;
 
 const WaveDot = ( props ) => (
-  <DotWrapper
-    style={ { transform: `scale( ${ props.scale ? props.scale : '.1' } )` } }
+  <Dot
+    style={ { transform: `scale( ${ props.scale } )` } }
   />
 );
 
 WaveDot.propTypes = {
-  scale: React.PropTypes.number.isRequired,
+  scale: PropTypes.number.isRequired,
 };
 
 export default WaveDot;
