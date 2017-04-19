@@ -1,6 +1,7 @@
 import React from 'react';
+import WaveBlock from './components/WaveBlock';
 
 const App = () => (
-  <div>App</div>
+  <WaveBlock />
 );
 export default App;
