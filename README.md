@@ -1,5 +1,5 @@
-Waveform
-========
+Waveblock
+=========
 
 Installation guide
 ------------------
