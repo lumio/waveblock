@@ -12,7 +12,13 @@ const AppWrapper = styled.div`
 `;
 const App = () => (
   <AppWrapper>
-    <WaveBlock />
+    <WaveBlock
+      data={ [
+        .05, .1, .2,
+        .3, .4, .5,
+        .2, .1, 0,
+      ] }
+    />
   </AppWrapper>
 );
 export default App;

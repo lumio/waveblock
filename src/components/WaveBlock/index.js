@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import WaveDot from '../WaveDot';
 
@@ -12,20 +13,16 @@ const BlockWrapper = styled.div`
   height: 30vmin;
 `;
 
-export default class WaveBlock extends React.Component {
-  render() {
-    const scales = [
-      0, .1, .2,
-      .1, .2, .3,
-      .2, .3, .4,
-    ];
+const WaveBlock = ( props ) => (
+  <BlockWrapper>
+    { props.data.map( ( scale, key ) => (
+      <WaveDot scale={ scale } key={ key } />
+    ) ) }
+  </BlockWrapper>
+);
 
-    return (
-      <BlockWrapper>
-        { scales.map( ( scale, key ) => (
-          <WaveDot scale={ scale } key={ key } />
-        ) ) }
-      </BlockWrapper>
-    )
-  }
-};
+WaveBlock.propTypes = {
+  data: PropTypes.arrayOf( PropTypes.number ).isRequired,
+}
+
+export default WaveBlock;
