@@ -1,6 +1,6 @@
 function shrinkData( data ) {
   const output = [];
-  output.push( ( data[ 0 ] + data[ 1 ] ) / 512 );
+  output.push( ( data[ 2 ] + data[ 1 ] ) / 512 );
   output.push( ( data[ 2 ] + data[ 3 ] ) / 512 );
   output.push( ( data[ 4 ] + data[ 5 ] ) / 512 );
   output.push( ( data[ 5 ] + data[ 6 ] + data[ 7 ] ) / 768 );
