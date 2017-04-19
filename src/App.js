@@ -22,14 +22,28 @@ export default class App extends React.Component {
         .05, .05, .05,
         .05, .05, .05,
       ],
+      // map: false,
+      map: [
+        3, 4, 5,
+        1, 0, 2,
+        6, 7, 3,
+      ],
     };
   }
 
   updateData = ( data ) => {
     this.setState( {
       ...this.state,
-      data,
+      data: this.remapData( data, this.state.map ),
     } );
+  }
+
+  remapData( data, map ) {
+    if ( !map || !map.length ) {
+      return data;
+    }
+
+    return map.map( key => data[ key ] );
   }
 
   render() {
