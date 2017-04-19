@@ -10,15 +10,25 @@ const AppWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const App = () => (
-  <AppWrapper>
-    <WaveBlock
-      data={ [
+
+export default class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      data: [
         .05, .1, .2,
         .3, .4, .5,
         .2, .1, 0,
-      ] }
-    />
-  </AppWrapper>
-);
-export default App;
+      ],
+    };
+  }
+
+  render() {
+    return (
+      <AppWrapper>
+        <WaveBlock data={ this.state.data } />
+      </AppWrapper>
+    );
+  }
+}
