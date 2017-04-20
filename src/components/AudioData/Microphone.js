@@ -20,7 +20,7 @@ export default function Microphone( frameCallback = () => {} ) {
     const analyser = audioContext.createAnalyser();
     const source = audioContext.createMediaStreamSource( stream );
     source.connect( analyser );
-    analyser.smoothingTimeConstant = 0.1;
+    analyser.smoothingTimeConstant = 0.5;
     analyser.fftSize = 32;
 
     let frequencyData = new Uint8Array(analyser.frequencyBinCount);
