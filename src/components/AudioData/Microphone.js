@@ -15,7 +15,7 @@ function shrinkData( data ) {
 
 export default function Microphone( frameCallback = () => {} ) {
   const audioContext = new AudioContext();
-  navigator.getUserMedia( { audio: true }, processSound, ( err ) => {} );
+  navigator.mediaDevices.getUserMedia( { audio: true } ).then( processSound );
   function processSound( stream ) {
     const analyser = audioContext.createAnalyser();
     const source = audioContext.createMediaStreamSource( stream );
