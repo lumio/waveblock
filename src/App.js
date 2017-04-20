@@ -43,7 +43,7 @@ export default class App extends React.Component {
   updateData = ( data ) => {
     this.setState( {
       ...this.state,
-      data: this.remapData( data, this.state.map ),
+      data: App.remapData( data, this.state.map ),
     } );
   }
 
