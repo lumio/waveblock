@@ -46,6 +46,8 @@ rules:
     - allow:
       - warn
       - error
+  no-floating-decimal:
+    - off
   react/forbid-prop-types:
     - off
   jsx-quotes:

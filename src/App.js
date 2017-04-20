@@ -13,6 +13,14 @@ const AppWrapper = styled.div`
 `;
 
 export default class App extends React.Component {
+  static remapData( data, map ) {
+    if ( !map || !map.length ) {
+      return data;
+    }
+
+    return map.map( key => data[ key ] );
+  }
+
   constructor() {
     super();
 
@@ -37,14 +45,6 @@ export default class App extends React.Component {
       ...this.state,
       data: this.remapData( data, this.state.map ),
     } );
-  }
-
-  remapData( data, map ) {
-    if ( !map || !map.length ) {
-      return data;
-    }
-
-    return map.map( key => data[ key ] );
   }
 
   render() {

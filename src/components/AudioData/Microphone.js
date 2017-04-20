@@ -23,7 +23,7 @@ export default function Microphone( frameCallback = () => {} ) {
     analyser.smoothingTimeConstant = 0.5;
     analyser.fftSize = 32;
 
-    let frequencyData = new Uint8Array(analyser.frequencyBinCount);
+    const frequencyData = new Uint8Array( analyser.frequencyBinCount );
     function renderFrame() {
       analyser.getByteFrequencyData( frequencyData );
       frameCallback( shrinkData( frequencyData ) );

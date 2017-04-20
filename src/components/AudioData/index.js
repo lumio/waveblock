@@ -13,7 +13,7 @@ class AudioData extends React.Component {
   render() {
     return null;
   }
-};
+}
 
 AudioData.propTypes = {
   updateData: PropTypes.func.isRequired,

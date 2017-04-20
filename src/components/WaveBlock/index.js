@@ -1,3 +1,4 @@
+/* eslint react/no-array-index-key: off */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -9,11 +10,11 @@ const BlockWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  width: ${ props => props.mode === 'square' ? '20vmin' : '20vmin' };
+  width: ${ props => ( props.mode === 'square' ? '20vmin' : '20vmin' ) };
   height: 20vmin;
 `;
 
-const WaveBlock = ( props ) => (
+const WaveBlock = props => (
   <BlockWrapper mode={ props.mode }>
     { props.data.map( ( scale, key ) => (
       <WaveDot scale={ scale } mode={ props.mode } key={ key } />
@@ -24,10 +25,10 @@ const WaveBlock = ( props ) => (
 WaveBlock.propTypes = {
   data: PropTypes.arrayOf( PropTypes.number ).isRequired,
   mode: PropTypes.string,
-}
+};
 
 WaveBlock.defaultProps = {
   mode: 'square',
-}
+};
 
 export default WaveBlock;
