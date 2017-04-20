@@ -11,7 +11,7 @@ function styleByMode( value, mode ) {
     return `scale( ${ value } )`;
   }
 
-  return `scaleX( .1 ) scaleY( ${ value } )`;
+  return `scaleX( .2 ) scaleY( ${ value } )`;
 }
 
 const Dot = styled.div`
@@ -19,7 +19,7 @@ const Dot = styled.div`
   height: 33.33%;
   background: #000;
 
-  border-radius: ${ props => props.mode === 'square' ? '100%' : '4px' };
+  border-radius: ${ props => props.mode === 'square' ? '100%' : '0' };
 `;
 
 const WaveDot = ( props ) => (
