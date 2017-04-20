@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import WaveBlock from './components/WaveBlock';
 import AudioData from './components/AudioData';
+import Controls from './components/Controls';
 
 const AppWrapper = styled.div`
   width: 100vw;
@@ -50,6 +51,7 @@ export default class App extends React.Component {
   render() {
     return (
       <AppWrapper>
+        <Controls />
         <AudioData updateData={ this.updateData } />
         <WaveBlock data={ this.state.data } mode={ this.state.mode } />
       </AppWrapper>
