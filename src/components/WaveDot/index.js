@@ -6,22 +6,30 @@ function stretchValue( scale, min, max ) {
   return ( max - min ) * scale + min
 }
 
+function styleByMode( value, mode ) {
+  if ( mode === 'square' ) {
+    return `scale( ${ value } )`;
+  }
+
+  return `scaleX( .1 ) scaleY( ${ value } )`;
+}
+
 const Dot = styled.div`
-  width: 33.33%;
+  width: ${ props => props.mode === 'square' ? '33.33%' : '10%' };
   height: 33.33%;
   background: #000;
 
-  border-radius: 100%;
-  transform: scale( .1 );
-  transition: all .2s ease;
+  border-radius: ${ props => props.mode === 'square' ? '100%' : '4px' };
 `;
 
 const WaveDot = ( props ) => (
   <Dot
+    mode={ props.mode }
     style={ {
-      transform: `scale( ${
-        stretchValue( props.scale, props.min, props.max )
-      } )`,
+      transform: styleByMode(
+        stretchValue( props.scale, props.min, props.max ),
+        props.mode,
+      ),
       opacity: stretchValue( props.scale, .25, 1 )
     } }
   />
@@ -31,11 +39,13 @@ WaveDot.propTypes = {
   scale: PropTypes.number.isRequired,
   min: PropTypes.number,
   max: PropTypes.number,
+  mode: PropTypes.string,
 };
 
 WaveDot.defaultProps = {
   min: .08,
   max: 1,
+  mode: 'square',
 }
 
 export default WaveDot;

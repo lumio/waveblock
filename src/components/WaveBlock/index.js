@@ -9,20 +9,25 @@ const BlockWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  width: 20vmin;
+  width: ${ props => props.mode === 'square' ? '20vmin' : '50vmin' };
   height: 20vmin;
 `;
 
 const WaveBlock = ( props ) => (
-  <BlockWrapper>
+  <BlockWrapper mode={ props.mode }>
     { props.data.map( ( scale, key ) => (
-      <WaveDot scale={ scale } key={ key } />
+      <WaveDot scale={ scale } mode={ props.mode } key={ key } />
     ) ) }
   </BlockWrapper>
 );
 
 WaveBlock.propTypes = {
   data: PropTypes.arrayOf( PropTypes.number ).isRequired,
+  mode: PropTypes.string,
+}
+
+WaveBlock.defaultProps = {
+  mode: 'square',
 }
 
 export default WaveBlock;

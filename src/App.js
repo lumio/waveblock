@@ -28,6 +28,7 @@ export default class App extends React.Component {
         1, 0, 2,
         6, 7, 3,
       ],
+      mode: 'line',
     };
   }
 
@@ -50,7 +51,7 @@ export default class App extends React.Component {
     return (
       <AppWrapper>
         <AudioData updateData={ this.updateData } />
-        <WaveBlock data={ this.state.data } />
+        <WaveBlock data={ this.state.data } mode={ this.state.mode } />
       </AppWrapper>
     );
   }
