@@ -1,0 +1,30 @@
+#!/bin/sh
+
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[1;32m'
+NC='\033[0m'
+
+yarn lint
+
+if [ $? -eq 0 ]; then
+   printf "\n"
+   printf "          ___________________\n"
+   printf "         /                   |\n"
+   printf "         |  ${YELLOW}I${NC} ${RED}<3${NC} ${YELLOW}your code!${NC}  |\n"
+   printf "         |___________________/\n"
+   printf "         V\n"
+   printf " ${GREEN}✓${NC}  eslint\n"
+   printf "\n"
+else
+   printf "\n"
+   printf "                _______\n"
+   printf "               /       |\n"
+   printf "               |  ${RED}NO!${NC}  |\n"
+   printf "               |_______/\n"
+   printf "               V\n"
+   printf "\n"
+   printf " ${RED}✘${NC}  ${YELLOW}Chuck Norris${NC}\n"
+   printf "\n"
+   exit 1
+fi

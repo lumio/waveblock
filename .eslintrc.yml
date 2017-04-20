@@ -1,0 +1,53 @@
+parser: babel-eslint
+extends: airbnb
+env:
+  browser: true
+  node: true
+  mocha: true
+plugins:
+  - react
+  - jsx-a11y
+  - import
+rules:
+  space-in-parens:
+    - error
+    - always
+  computed-property-spacing:
+    - error
+    - always
+  array-bracket-spacing:
+    - error
+    - always
+  template-curly-spacing:
+    - error
+    - always
+  no-use-before-define:
+    - error
+    - functions: false
+  brace-style:
+    - error
+    - stroustrup
+  new-cap:
+    - off
+  import/no-named-as-default:
+    - off
+  react/jsx-curly-spacing:
+    - error
+    - always
+  react/jsx-filename-extension:
+    - warn
+    - extensions:
+        - .js
+        - .jsx
+  no-underscore-dangle:
+    - off
+  no-console:
+    - error
+    - allow:
+      - warn
+      - error
+  react/forbid-prop-types:
+    - off
+  jsx-quotes:
+    - error
+    - prefer-single
