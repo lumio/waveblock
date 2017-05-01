@@ -1,6 +1,8 @@
 Waveblock
 =========
 
+_**Work in progress!** First (dirty) prototype is more or less ready to play around with._
+
 This is just a little test project. I was playing with some Web APIs to read the
 frequencies of different audio sources and visualize them.
 
