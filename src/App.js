@@ -38,6 +38,7 @@ export default class App extends React.Component {
         6, 7, 3,
       ],
       options: {
+        source: 'mic',
         mode: 'line',
         color: '#fff',
       },

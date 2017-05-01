@@ -47,6 +47,31 @@ const Controls = props => (
         { props.hideControls ? 'show ' : 'hide ' } controls
       </button>
     </div>
+
+    <div>
+      <label htmlFor='sourceMic'>
+        <input
+          id='sourceMic'
+          type='radio'
+          onClick={ () => props.updateOption( 'source', 'mic' ) }
+          checked={ props.options.source === 'mic' }
+          readOnly
+        />
+        { ' ' }mic
+      </label>
+
+      <label htmlFor='sourceFile'>
+        <input
+          id='sourceFile'
+          type='radio'
+          onClick={ () => props.updateOption( 'source', 'file' ) }
+          checked={ props.options.source === 'file' }
+          readOnly
+        />
+        { ' ' }file
+      </label>
+    </div>
+
     <div>
       <label htmlFor='modeSquare'>
         <input
