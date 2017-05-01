@@ -15,9 +15,9 @@ function styleByMode( value, mode ) {
 }
 
 const Dot = styled.div`
-  width: ${ props => ( props.mode === 'square' ? '33.33%' : '5%' ) };
+  width: ${ props => ( props.mode === 'square' ? '33.33%' : '6%' ) };
   height: 33.33%;
-  transition: background-color .5s, transform .05s ease;
+  transition: background-color 1s, transform .05s ease;
 
   border-radius: ${ props => ( props.mode === 'square' ? '100%' : '0' ) };
 `;
