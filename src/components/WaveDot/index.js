@@ -15,9 +15,9 @@ function styleByMode( value, mode ) {
 }
 
 const Dot = styled.div`
-  width: ${ props => ( props.mode === 'square' ? '33.33%' : '10%' ) };
+  width: ${ props => ( props.mode === 'square' ? '33.33%' : '5%' ) };
   height: 33.33%;
-  background: #000;
+  transition: background-color .5s;
 
   border-radius: ${ props => ( props.mode === 'square' ? '100%' : '0' ) };
 `;
@@ -31,6 +31,7 @@ const WaveDot = props => (
         props.mode,
       ),
       opacity: stretchValue( props.scale, .25, 1 ),
+      backgroundColor: props.color,
     } }
   />
 );
@@ -40,12 +41,14 @@ WaveDot.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   mode: PropTypes.string,
+  color: PropTypes.string,
 };
 
 WaveDot.defaultProps = {
   min: .08,
   max: 1,
   mode: 'square',
+  color: '#fff',
 };
 
 export default WaveDot;

@@ -10,8 +10,8 @@ const BlockWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  width: ${ props => ( props.mode === 'square' ? '20vmin' : '20vmin' ) };
-  height: 20vmin;
+  width: 320px;
+  height: 240px;
 `;
 
 const WaveBlock = props => (
