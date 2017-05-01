@@ -11,7 +11,7 @@ How to run this project?
 ------------------------
 
 1. Clone it  
-   `git clone https://github.com/lumio/waveblock.git && cd waveblock`
+   `git clone https://github.com/lumio/waveblock.git; cd waveblock`
 
 2. Install dependencies with  
    `yarn` or `npm i`
