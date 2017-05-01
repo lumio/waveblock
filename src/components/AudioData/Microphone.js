@@ -13,22 +13,28 @@ function shrinkData( data ) {
   return output;
 }
 
-export default function Microphone( frameCallback = () => {} ) {
-  const audioContext = new AudioContext();
-  navigator.mediaDevices.getUserMedia( { audio: true } ).then( processSound );
-  function processSound( stream ) {
-    const analyser = audioContext.createAnalyser();
-    const source = audioContext.createMediaStreamSource( stream );
-    source.connect( analyser );
-    analyser.smoothingTimeConstant = 0.5;
-    analyser.fftSize = 32;
+export default class Microphone {
+  constructor( frameCallback = () => {} ) {
+    const audioContext = new AudioContext();
+    navigator.mediaDevices.getUserMedia( { audio: true } ).then( processSound );
+    function processSound( stream ) {
+      const analyser = audioContext.createAnalyser();
+      const source = audioContext.createMediaStreamSource( stream );
+      source.connect( analyser );
+      analyser.smoothingTimeConstant = 0.5;
+      analyser.fftSize = 32;
 
-    const frequencyData = new Uint8Array( analyser.frequencyBinCount );
-    function renderFrame() {
-      analyser.getByteFrequencyData( frequencyData );
-      frameCallback( shrinkData( frequencyData ) );
+      const frequencyData = new Uint8Array( analyser.frequencyBinCount );
+      function renderFrame() {
+        analyser.getByteFrequencyData( frequencyData );
+        frameCallback( shrinkData( frequencyData ) );
+        requestAnimationFrame( renderFrame );
+      }
       requestAnimationFrame( renderFrame );
     }
-    requestAnimationFrame( renderFrame );
+  }
+
+  render() {
+    return null;
   }
 }

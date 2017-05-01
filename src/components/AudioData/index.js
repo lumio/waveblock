@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import File from './File';
+import Microphone from './Microphone';
 
 class AudioData extends React.Component {
 
   constructor( props ) {
     super( props );
-    this.source = new File( ( data ) => {
+    this.source = new Microphone( ( data ) => {
       props.updateData( data );
     } );
   }
@@ -14,7 +14,7 @@ class AudioData extends React.Component {
   source: null
 
   render() {
-    return ( this.source.render ? this.source.render() : null );
+    return ( this.source && this.source.render ? this.source.render() : null );
   }
 }
 
