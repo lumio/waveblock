@@ -9,11 +9,36 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 1em;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
   font: 1em/1.3 Helvetica, Arial, sans-serif;
+
+  transition: opacity 1s;
+  opacity: ${ props => ( props.hideControls ? 0 : 1 ) };
+
+  input[ type=text ] {
+    border: 1px solid #333;
+    background: #010101;
+    color: #ccc;
+    padding: 4px;
+  }
+
+  label {
+    display: block;
+  }
 `;
 
 const Controls = props => (
-  <Wrapper>
+  <Wrapper hideControls={ props.hideControls }>
+    <div>
+      <button
+        onClick={ () => props.updateOption( 'hideControls', true ) }
+      >
+        hide controls
+      </button>
+    </div>
     <div>
       <label htmlFor='modeSquare'>
         <input
@@ -25,7 +50,6 @@ const Controls = props => (
         />
         { ' ' }square
       </label>
-      <br />
 
       <label htmlFor='modeLine'>
         <input
@@ -49,7 +73,6 @@ const Controls = props => (
           value={ props.options.color }
         />
       </label>
-      <br />
 
       <label htmlFor='colorWhite'>
         <input
@@ -61,7 +84,6 @@ const Controls = props => (
         />
         { ' ' }white
       </label>
-      <br />
 
       <label htmlFor='colorBlue'>
         <input
@@ -73,7 +95,6 @@ const Controls = props => (
         />
         { ' ' }blue
       </label>
-      <br />
 
       <label htmlFor='colorRed'>
         <input
@@ -92,6 +113,11 @@ const Controls = props => (
 Controls.propTypes = {
   updateOption: PropTypes.func.isRequired,
   options: PropTypes.object.isRequired,
+  hideControls: PropTypes.bool,
+};
+
+Controls.defaultProps = {
+  hideControls: false,
 };
 
 export default Controls;

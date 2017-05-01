@@ -66,6 +66,7 @@ export default class App extends React.Component {
       <AppWrapper>
         <Controls
           updateOption={ this.updateOption }
+          hideControls={ this.state.options.hideControls }
           options={ this.state.options }
         />
         <AudioData updateData={ this.updateData } />
