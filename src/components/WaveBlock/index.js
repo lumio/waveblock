@@ -10,7 +10,7 @@ const BlockWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  width: 320px;
+  width: ${ props => ( props.mode === 'square' ? '240px' : '320px' ) };
   height: 240px;
 `;
 
