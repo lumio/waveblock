@@ -25,6 +25,14 @@ const Wrapper = styled.div`
     padding: 4px;
   }
 
+  button {
+    border: none;
+    background: #222;
+    color: #ccc;
+    padding: 8px 1em;
+    min-width: 150px;
+  }
+
   label {
     display: block;
   }
