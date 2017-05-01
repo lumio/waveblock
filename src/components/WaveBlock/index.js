@@ -17,7 +17,7 @@ const BlockWrapper = styled.div`
 const WaveBlock = props => (
   <BlockWrapper mode={ props.mode }>
     { props.data.map( ( scale, key ) => (
-      <WaveDot scale={ scale } mode={ props.mode } key={ key } />
+      <WaveDot scale={ scale } mode={ props.mode } color={ props.color } key={ key } />
     ) ) }
   </BlockWrapper>
 );
@@ -25,10 +25,12 @@ const WaveBlock = props => (
 WaveBlock.propTypes = {
   data: PropTypes.arrayOf( PropTypes.number ).isRequired,
   mode: PropTypes.string,
+  color: PropTypes.string,
 };
 
 WaveBlock.defaultProps = {
   mode: 'square',
+  color: '#fff',
 };
 
 export default WaveBlock;

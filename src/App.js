@@ -37,7 +37,10 @@ export default class App extends React.Component {
         1, 0, 2,
         6, 7, 3,
       ],
-      mode: 'line',
+      options: {
+        mode: 'line',
+        color: '#fff',
+      },
     };
   }
 
@@ -48,12 +51,29 @@ export default class App extends React.Component {
     } );
   }
 
+  updateOption = ( key, value ) => {
+    this.setState( {
+      ...this.state,
+      options: {
+        ...this.state.options,
+        [ key ]: value,
+      },
+    } );
+  };
+
   render() {
     return (
       <AppWrapper>
-        <Controls />
+        <Controls
+          updateOption={ this.updateOption }
+          options={ this.state.options }
+        />
         <AudioData updateData={ this.updateData } />
-        <WaveBlock data={ this.state.data } mode={ this.state.mode } />
+        <WaveBlock
+          data={ this.state.data }
+          mode={ this.state.options.mode }
+          color={ this.state.options.color }
+        />
       </AppWrapper>
     );
   }
