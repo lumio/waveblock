@@ -34,9 +34,9 @@ const Controls = props => (
   <Wrapper hideControls={ props.hideControls }>
     <div>
       <button
-        onClick={ () => props.updateOption( 'hideControls', true ) }
+        onClick={ () => props.updateOption( 'hideControls', !props.hideControls ) }
       >
-        hide controls
+        { props.hideControls ? 'show ' : 'hide ' } controls
       </button>
     </div>
     <div>
