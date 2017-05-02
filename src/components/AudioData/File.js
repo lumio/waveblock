@@ -21,17 +21,18 @@ class File {
   }
 
   init( binary ) {
-    const audioContext = new AudioContext();
-    audioContext.decodeAudioData( binary ).then( ( decodedData ) => {
-      const source = audioContext.createBufferSource();
+    this.audioContext = new AudioContext();
+    this.audioContext.decodeAudioData( binary ).then( ( decodedData ) => {
+      const source = this.audioContext.createBufferSource();
+      this.stream = source;
       source.buffer = decodedData;
 
-      const analyser = audioContext.createAnalyser();
+      const analyser = this.audioContext.createAnalyser();
       analyser.smoothingTimeConstant = 0.5;
       analyser.fftSize = 32;
 
       source.connect( analyser );
-      source.connect( audioContext.destination );
+      source.connect( this.audioContext.destination );
       source.start();
 
       const frequencyData = new Uint8Array( analyser.frequencyBinCount );
@@ -56,6 +57,12 @@ class File {
       this.init( contents );
     };
     reader.readAsArrayBuffer( file );
+  }
+
+  destroy() {
+    if ( this.stream ) {
+      this.stream.stop();
+    }
   }
 
   render() {

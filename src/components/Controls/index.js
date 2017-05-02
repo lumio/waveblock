@@ -53,8 +53,8 @@ const Controls = props => (
         <input
           id='sourceMic'
           type='radio'
-          onClick={ () => props.updateOption( 'source', 'mic' ) }
-          checked={ props.options.source === 'mic' }
+          onClick={ () => props.updateOption( 'source', 'Microphone' ) }
+          checked={ props.options.source === 'Microphone' }
           readOnly
         />
         { ' ' }mic
@@ -64,8 +64,8 @@ const Controls = props => (
         <input
           id='sourceFile'
           type='radio'
-          onClick={ () => props.updateOption( 'source', 'file' ) }
-          checked={ props.options.source === 'file' }
+          onClick={ () => props.updateOption( 'source', 'File' ) }
+          checked={ props.options.source === 'File' }
           readOnly
         />
         { ' ' }file
@@ -139,6 +139,8 @@ const Controls = props => (
         />
         { ' ' }red
       </label>
+
+      { props.children }
     </div>
   </Wrapper>
 );
@@ -147,10 +149,12 @@ Controls.propTypes = {
   updateOption: PropTypes.func.isRequired,
   options: PropTypes.object.isRequired,
   hideControls: PropTypes.bool,
+  children: PropTypes.node,
 };
 
 Controls.defaultProps = {
   hideControls: false,
+  children: null,
 };
 
 export default Controls;

@@ -16,8 +16,10 @@ function shrinkData( data ) {
 export default class Microphone {
   constructor( frameCallback = () => {} ) {
     const audioContext = new AudioContext();
-    navigator.mediaDevices.getUserMedia( { audio: true } ).then( processSound );
-    function processSound( stream ) {
+    const processSound = ( stream ) => {
+      if ( !this.recorder ) {
+        this.recorder = new MediaRecorder( stream );
+      }
       const analyser = audioContext.createAnalyser();
       const source = audioContext.createMediaStreamSource( stream );
       source.connect( analyser );
@@ -31,6 +33,16 @@ export default class Microphone {
         requestAnimationFrame( renderFrame );
       }
       requestAnimationFrame( renderFrame );
+    };
+
+    navigator.mediaDevices.getUserMedia( { audio: true, video: false } ).then( processSound );
+  }
+
+  recorder = false;
+
+  destroy() {
+    if ( this.recorder ) {
+      this.recorder.stream.getAudioTracks().forEach( track => track.stop() );
     }
   }
 

@@ -38,7 +38,7 @@ export default class App extends React.Component {
         6, 7, 3,
       ],
       options: {
-        source: 'mic',
+        source: 'File',
         mode: 'line',
         color: '#fff',
       },
@@ -69,8 +69,13 @@ export default class App extends React.Component {
           updateOption={ this.updateOption }
           hideControls={ this.state.options.hideControls }
           options={ this.state.options }
-        />
-        <AudioData updateData={ this.updateData } />
+        >
+          <AudioData
+            updateData={ this.updateData }
+            source={ this.state.options.source }
+          />
+        </Controls>
+
         <WaveBlock
           data={ this.state.data }
           mode={ this.state.options.mode }

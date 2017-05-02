@@ -1,17 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Microphone from './Microphone';
+import File from './File';
+
+const inputSources = {
+  Microphone,
+  File,
+};
 
 class AudioData extends React.Component {
 
   constructor( props ) {
     super( props );
-    this.source = new Microphone( ( data ) => {
-      props.updateData( data );
-    } );
+    this.state = {
+      source: props.source,
+    };
+    this.useSource( props.source );
+  }
+
+  componentWillReceiveProps( newProps ) {
+    if ( this.props.source !== newProps.source ) {
+      this.useSource( newProps.source );
+    }
   }
 
   source: null
+
+  useSource( source ) {
+    if ( !inputSources[ source ] ) {
+      return alert( 'Whoups, something went wrong' );
+    }
+    if ( this.source && this.source.destroy ) {
+      this.source.destroy();
+    }
+    delete this.source;
+    this.source = new inputSources[ source ]( ( data ) => {
+      this.props.updateData( data );
+    } );
+    return true;
+  }
 
   render() {
     return ( this.source && this.source.render ? this.source.render() : null );
@@ -20,6 +47,7 @@ class AudioData extends React.Component {
 
 AudioData.propTypes = {
   updateData: PropTypes.func.isRequired,
+  source: PropTypes.string.isRequired,
 };
 
 export default AudioData;
