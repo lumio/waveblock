@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Microphone from './Microphone';
-import File from './File';
+
+import File from './inputSources/File';
+import Microphone from './inputSources/Microphone';
 
 const inputSources = {
-  Microphone,
   File,
+  Microphone,
 };
 
 class AudioData extends React.Component {
