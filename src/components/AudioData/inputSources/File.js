@@ -21,6 +21,10 @@ class File extends InputSource {
   }
 
   readFile = ( e ) => {
+    if ( this.stream ) {
+      this.stream.stop();
+    }
+
     const file = e.target.files[ 0 ];
     if ( !file ) {
       return;
