@@ -1,7 +1,12 @@
 {
-  "name": "waveform",
-  "version": "0.1.0",
+  "name": "waveblock",
+  "description": "An audio visualiser made with React and Web API only",
+  "author": "Benjamin Falk <benjamin.falk@cyanjoe.com> (http://cyanjoe.com)",
+  "homepage": "https://github.com/lumio/waveblock",
+  "bugs": "https://github.com/lumio/waveblock/issues",
+  "license": "GPL-3.0",
   "private": true,
+  "version": "0.1.0",
   "dependencies": {
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
