@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ControlsOptions from './ControlsOptions';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -48,55 +49,30 @@ const Controls = props => (
       </button>
     </div>
 
-    <div>
-      <label htmlFor='sourceMic'>
-        <input
-          id='sourceMic'
-          type='radio'
-          onClick={ () => props.updateOption( 'source', 'Microphone' ) }
-          checked={ props.options.source === 'Microphone' }
-          readOnly
-        />
-        { ' ' }mic
-      </label>
+    <ControlsOptions
+      updateOption={ props.updateOption }
+      optionName='source'
+      options={ [ 'Microphone', 'File' ] }
+      selected={ props.options.source }
+    />
 
-      <label htmlFor='sourceFile'>
-        <input
-          id='sourceFile'
-          type='radio'
-          onClick={ () => props.updateOption( 'source', 'File' ) }
-          checked={ props.options.source === 'File' }
-          readOnly
-        />
-        { ' ' }file
-      </label>
-    </div>
+    <ControlsOptions
+      updateOption={ props.updateOption }
+      optionName='mode'
+      options={ [ 'square', 'line' ] }
+      selected={ props.options.mode }
+    />
 
-    <div>
-      <label htmlFor='modeSquare'>
-        <input
-          id='modeSquare'
-          type='radio'
-          onClick={ () => props.updateOption( 'mode', 'square' ) }
-          checked={ props.options.mode === 'square' }
-          readOnly
-        />
-        { ' ' }square
-      </label>
-
-      <label htmlFor='modeLine'>
-        <input
-          id='modeLine'
-          type='radio'
-          onClick={ () => props.updateOption( 'mode', 'line' ) }
-          checked={ props.options.mode === 'line' }
-          readOnly
-        />
-        { ' ' }line
-      </label>
-    </div>
-
-    <div>
+    <ControlsOptions
+      updateOption={ props.updateOption }
+      optionName='color'
+      options={ [
+        [ '#fff', 'white' ],
+        [ '#00e0ff', 'blue' ],
+        [ '#fe1d1d', 'red' ],
+      ] }
+      selected={ props.options.color }
+    >
       <label htmlFor='colorInput'>
         color{ ' ' }
         <input
@@ -106,40 +82,9 @@ const Controls = props => (
           value={ props.options.color }
         />
       </label>
+    </ControlsOptions>
 
-      <label htmlFor='colorWhite'>
-        <input
-          id='colorWhite'
-          type='radio'
-          onClick={ () => props.updateOption( 'color', '#fff' ) }
-          checked={ props.options.color === '#fff' }
-          readOnly
-        />
-        { ' ' }white
-      </label>
-
-      <label htmlFor='colorBlue'>
-        <input
-          id='colorBlue'
-          type='radio'
-          onClick={ () => props.updateOption( 'color', '#00e0ff' ) }
-          checked={ props.options.color === '#00e0ff' }
-          readOnly
-        />
-        { ' ' }blue
-      </label>
-
-      <label htmlFor='colorRed'>
-        <input
-          id='colorRed'
-          type='radio'
-          onClick={ () => props.updateOption( 'color', '#fe1d1d' ) }
-          checked={ props.options.color === '#fe1d1d' }
-          readOnly
-        />
-        { ' ' }red
-      </label>
-
+    <div>
       { props.children }
     </div>
   </Wrapper>
